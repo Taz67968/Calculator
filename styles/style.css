@@ -1,0 +1,79 @@
+body {
+  padding: 1rem;
+  border: 1px solid #313131;
+}
+
+.buttons {
+  background-color: black;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.empty {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 7px;
+}
+
+.bot {
+  width: 56%;
+  background-color: #cac9c9;
+  border: none;
+  padding: 0.5px;
+  height: 30px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.hot,
+.rem {
+  height: 30px;
+  background-color: #cac9c9;
+  border: none;
+  width: 19.5%;
+  margin: 1px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.why,
+.who,
+.where,
+.which,
+.nine,
+.one,
+.two,
+.ex {
+  height: 30px;
+  background-color: #cac9c9;
+  border: none;
+  width: 23%;
+  margin: 1px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.we,
+.are,
+.get {
+  height: 30px;
+  background-color: #cac9c9;
+  border: none;
+  width: 23%;
+  margin: 1px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.see,
+.got {
+  height: 30px;
+  background-color: #cac9c9;
+  border: none;
+  width: 19.5%;
+  margin: 1px;
+  border-radius: 5px;
+  color: #fff;
+}
