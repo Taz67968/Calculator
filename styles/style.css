@@ -1,79 +1,87 @@
-body {
-  padding: 1rem;
-  border: 1px solid #313131;
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
-.buttons {
-  background-color: black;
-  padding: 8px;
-  border-radius: 8px;
-}
-
-.empty {
+.container {
   width: 100%;
-  padding: 1rem;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 7px;
+  height: 100vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.bot {
-  width: 56%;
-  background-color: #cac9c9;
-  border: none;
-  padding: 0.5px;
-  height: 30px;
-  border-radius: 8px;
+.calculator {
+  background: rgb(68, 48, 23);
+  padding: 20px;
+  border-radius: 10px;
+  margin-left: 10pxs;
+}
+.calculator form input {
+  border: 0;
+  outline: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  box-shadow: -8px -8px 15px #e1e1e11a,5px 5px 15px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  font-size: 20px;
   color: #fff;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.hot,
-.rem {
-  height: 30px;
-  background-color: #cac9c9;
-  border: none;
-  width: 19.5%;
-  margin: 1px;
-  border-radius: 5px;
-  color: #fff;
+form .display {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+  color: antiquewhite;
 }
 
-.why,
-.who,
-.where,
-.which,
-.nine,
-.one,
-.two,
-.ex {
-  height: 30px;
-  background-color: #cac9c9;
-  border: none;
-  width: 23%;
-  margin: 1px;
-  border-radius: 5px;
-  color: #fff;
+form .display input {
+  text-align: right;
+  flex: 1;
+  font-size: 45px;
+  box-shadow: none;
 }
 
-.we,
-.are,
-.get {
-  height: 30px;
-  background-color: #cac9c9;
-  border: none;
-  width: 23%;
-  margin: 1px;
-  border-radius: 5px;
-  color: #fff;
+form input.equal {
+  width: 67px;
 }
 
-.see,
-.got {
-  height: 30px;
-  background-color: #cac9c9;
-  border: none;
-  width: 19.5%;
-  margin: 1px;
-  border-radius: 5px;
-  color: #fff;
+form  input.operator {
+  color: white;
+  background-color: #746464;
+}
+
+#side {
+  text-align: end;
+}
+
+#top {
+  display: flex;
+}
+
+#one {
+  display: flex;
+}
+
+#two {
+  display: flex;
+}
+
+#three {
+  display: flex;
+}
+
+#four {
+  display: flex;
+}
+
+.display {
+  border: 1px solid white;
+  border-radius: 5%;
 }

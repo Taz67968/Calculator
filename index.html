@@ -1,54 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
-  <body>
-    <div class="buttons">
-      <button class="empty"></button>
-      <div class="acs">
-        <button class="bot">AC</button>
-        <button class="hot">DEL</button>
-        <button class="rem">+</button>
-      </div>
-      <div class="numbers">
-        <button class="nine">9</button>
-        <button class="one">8</button>
-        <button class="two">7</button>
-        <button class="ex">x</button>
-      </div>
-      <div class="leters">
-        <button class="why">6</button>
-        <button class="where">5</button>
-        <button class="which">4</button>
-        <button class="who">/</button>
-      </div>
-      <div>
-        <button
-          style="
-            background-color: #646262;
-            border: none;
-            width: 23%;
-            height: 30px;
-            margin: 1px;
-            border-radius: 5px;
-            color: #fff;
-          "
-        >
-          1
-        </button>
-        <button class="we">2</button>
-        <button class="are">3</button>
-        <button class="get">-</button>
-      </div>
-      <div>
-        <button class="got">0</button>
-        <button class="see">.</button>
-        <button class="bot">=</button>
-      </div>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  
+    <div class="container">
+        <div class="calculator">
+            <form>
+                <div class="display">
+                    <input type="text" name="display">
+                </div>
+                <div id="top">
+                    <input type="button" value="AC" onclick="display.value = '' " class="operator">
+                    <input type="button" value="DE" onclick="display.value = display.value.toString().slice(0,-1) " class="operator">
+                    <input type="button" value="." onclick="display.value += '.' "  class="operator">
+                    <input type="button" value="/" onclick="display.value += '/' "  class="operator">
+                </div>
+                <div id="one">
+                    <input type="button" value="7" onclick="display.value += '7' ">
+                    <input type="button" value="8" onclick="display.value += '8' ">
+                    <input type="button" value="9" onclick="display.value += '9' ">
+                    <div id="side"><input type="button" value="*" onclick="display.value += '*' "  class="operator"></div>
+                </div>
+                <div id="two">
+                    <input type="button" value="4" onclick="display.value += '4' ">
+                    <input type="button" value="5" onclick="display.value += '5' ">
+                    <input type="button" value="6" onclick="display.value += '6' ">
+                    <div id="side"><input type="button" value="-" onclick="display.value += '-' "  class="operator"></div>
+                </div>
+                <div id="four">
+                    <input type="button" value="1" onclick="display.value += '1' ">
+                    <input type="button" value="2" onclick="display.value += '2' ">
+                    <input type="button" value="3" onclick="display.value += '3' ">
+                    <div id="side"><input type="button" value="+" onclick="display.value += '+' "  class="operator"></div>
+                </div>
+                <div id="three">
+                    <input type="button" value="00" onclick="display.value += '00' ">
+                    <input type="button" value="0" onclick="display.value += '0' ">
+                    <input type="button" value="%" onclick="display.value += '%' " class="operator">
+                    <input type="button" value="=" onclick="display.value = eval(display.value)" class="equal operator">
+                </div>
+            </form>
+        </div>
     </div>
-  </body>
+</body>
 </html>
