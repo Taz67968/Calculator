@@ -1,98 +1,68 @@
 // Get references to DOM elements
-const display = document.getElementById('display')
-const buttons = document.querySelectorAll('.buttons button')
-const equalsBtn = document.getElementById('equals')
-const clearBtn = document.getElementById('clear')
+const display = document.getElementById('display');
+const buttons = document.querySelectorAll('.buttons button');
+const equalsBtn = document.getElementById('equals');
+const clearBtn = document.getElementById('clear');
 
-// Append value to the display
-function appendValue(val) {
+// Append button value to display
+function appendValue (val) {
   display.value += val
 }
 
-// Evaluate the arithmetic expression using a custom parser (shunting-yard algorithm)
-function evaluateExpression(expr) {
-  // Tokenize expression: numbers (including decimals) and operators
-  const tokens = expr.match(/(\d+(\.\d+)?)|[\+\-\*\/]/g)
-  if (!tokens) throw new Error('Invalid Expression')
+// A simple evaluator that handles *, / first, then +, -
+function evaluateExpression (expr) {
+  // Tokenize the expression into numbers and operators.
+  const tokens = expr.match(/(\d+(\.\d+)?)|[+\-*/]/g)
+  if (!tokens) return "Error"
 
-  const outputQueue = [];
-  const operatorStack = [];
-  const precedence = {
-    '+': 1,
-    '-': 1,
-    '*': 2,
-    '/': 2
-  }
-
-  // Process each token
-  tokens.forEach(token => {
-    if (!isNaN(parseFloat(token))) {
-      outputQueue.push(parseFloat(token))
-    } else if (token in precedence) {
-      while (
-        operatorStack.length > 0 &&
-        precedence[operatorStack[operatorStack.length - 1]] >= precedence[token]
-      ) {
-        outputQueue.push(operatorStack.pop())
-      }
-      operatorStack.push(token)
-    }
-  })
-
-  // Drain the operator stack into the output queue
-  while (operatorStack.length > 0) {
-    outputQueue.push(operatorStack.pop())
-  }
-
-  // Evaluate the Reverse Polish Notation (RPN) outputQueue
-  const stack = []
-  outputQueue.forEach(token => {
-    if (typeof token === 'number') {
-      stack.push(token)
+  // First pass: handle multiplication and division
+  let newTokens = [];
+  let i = 0
+  while (i < tokens.length) {
+    if (tokens[i] === '*' || tokens[i] === '/') {
+      // Get the previous number from newTokens and the next token
+      const operator = tokens[i]
+      const left = parseFloat(newTokens.pop())
+      const right = parseFloat(tokens[i + 1])
+      let result = operator === '*' ? left * right : left / right
+      newTokens.push(result)
+      i += 2 // Skip the operator and next number
     } else {
-      const b = stack.pop();
-      const a = stack.pop()
-      switch (token) {
-        case '+':
-          stack.push(a + b)
-          break
-        case '-':
-          stack.push(a - b)
-          break
-        case '*':
-          stack.push(a * b)
-          break
-        case '/':
-          stack.push(a / b)
-          break
-        default:
-          throw new Error('Unsupported operator: ' + token)
-      }
+      newTokens.push(tokens[i])
+      i++
     }
-  })
+  }
   
-  if (stack.length !== 1) throw new Error('Invalid Expression')
-  return stack[0]
+  // Second pass: handle addition and subtraction
+  let result = parseFloat(newTokens[0])
+  i = 1
+  while (i < newTokens.length) {
+    const operator = newTokens[i]
+    const right = parseFloat(newTokens[i + 1])
+    if (operator === '+') {
+      result += right
+    } else if (operator === '-') {
+      result -= right
+    }
+    i += 2
+  }
+  
+  return result
 }
 
-// Calculate the result using the custom parser
+// Calculate the result and update the display
 function calculate() {
-  try {
-    const result = evaluateExpression(display.value);
-    display.value = result;
-  } catch (error) {
-    display.value = 'Error'
-  }
+  const result = evaluateExpression(display.value)
+  display.value = result
 }
 
 // Clear the display
 function clearDisplay() {
-  display.value = ''
+  display.value = ""
 }
 
-// Add event listeners to buttons
+// Add click events to each button
 buttons.forEach(button => {
-  // If the button has a data-value attribute, append its value to the display
   if (button.dataset.value) {
     button.addEventListener('click', () => {
       appendValue(button.dataset.value)
@@ -100,6 +70,5 @@ buttons.forEach(button => {
   }
 })
 
-// Add event listeners for equals and clear buttons
 equalsBtn.addEventListener('click', calculate)
 clearBtn.addEventListener('click', clearDisplay)
