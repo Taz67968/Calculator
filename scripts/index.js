@@ -39,15 +39,18 @@ function evaluateExpression (expr) {
     i += 2
   }
   return result
+
 }
 
 function calculate() {
   const result = evaluateExpression(display.value)
   display.value = result
+
 }
 
 function clearDisplay() {
   display.value = ''
+  
 }
 
 buttons.forEach(button => {
