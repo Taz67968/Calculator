@@ -1,0 +1,61 @@
+/* Basic styling for the calculator */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.calculator {
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 50vw;
+  height: 50vh;
+  max-width: 400px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#display {
+  width: 100%;
+  height: 15%;
+  text-align: right;
+  font-size: 1.5em;
+  padding: 5px;
+  box-sizing: border-box;
+  color: black;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  height: 80%;
+}
+
+.buttons button {
+  font-size: 1.2em;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: black;
+}
+
+.buttons button[data-value="+"],
+.buttons button[data-value="-"],
+.buttons button[data-value="*"],
+.buttons button[data-value="/"] {
+  background-color: #926b08;
+  font-size: 35px;
+}
+
+.wide {
+  grid-column: span 4;
+}
