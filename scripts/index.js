@@ -3,14 +3,13 @@ const buttons = document.querySelectorAll('.buttons button')
 const equalsBtn = document.getElementById('equals')
 const clearBtn = document.getElementById('clear')
 
-
 function appendValue (val) {
   display.value += val
 }
 
 function evaluateExpression (expr) {
   const tokens = expr.match(/(\d+(\.\d+)?)|[+\-*/]/g)
-  if (!tokens) return "Error"
+  if (!tokens) return 'Error'
 
   const newTokens = []
   let i = 0
@@ -32,7 +31,7 @@ function evaluateExpression (expr) {
   while (i < newTokens.length) {
     const operator = newTokens[i]
     const right = parseFloat(newTokens[i + 1])
-    if (operator === '+'){
+    if (operator === '+') {
       result += right
     } else if (operator === '-') {
       result -= right
@@ -41,12 +40,14 @@ function evaluateExpression (expr) {
   }
   return result
 }
+
 function calculate() {
   const result = evaluateExpression(display.value)
   display.value = result
 }
+
 function clearDisplay() {
-  display.value = ""
+  display.value = ''
 }
 
 buttons.forEach(button => {
