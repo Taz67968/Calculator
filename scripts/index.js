@@ -41,12 +41,12 @@ function evaluateExpression (expr) {
   return result
 }
 
- function calculate() {
+function calculate () {
   const result = evaluateExpression(display.value)
   display.value = result
 }
 
- function clearDisplay() {
+function clearDisplay () {
   display.value = ''
 }
 
