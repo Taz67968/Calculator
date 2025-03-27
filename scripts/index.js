@@ -18,15 +18,15 @@ function evaluateExpression (expr) {
     if (tokens[i] === '*' || tokens[i] === '/') {
       const left = parseFloat(newTokens.pop())
       const right = parseFloat(tokens[i + 1])
+      const operator = tokens[i]
       const result = operator === '*' ? left * right : left / right
       newTokens.push(result)
-      i += 2 
+      i += 2
     } else {
       newTokens.push(tokens[i])
       i++
     }
   }
-  
   let result = parseFloat(newTokens[0])
   i = 1
   while (i < newTokens.length) {
@@ -34,20 +34,17 @@ function evaluateExpression (expr) {
     const right = parseFloat(newTokens[i + 1])
     if (operator === '+'){
       result += right
-    } else if (operator === '-'){
+    } else if (operator === '-') {
       result -= right
     }
     i += 2
   }
-  
   return result
 }
-
 function calculate() {
   const result = evaluateExpression(display.value)
   display.value = result
 }
-
 function clearDisplay() {
   display.value = ""
 }
